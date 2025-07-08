@@ -10,7 +10,7 @@ const ScrollDownArrow: React.FC<ScrollDownArrowProps> = ({ targetSection, onSect
   <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
     <button
       onClick={() => onSectionChange(targetSection)}
-      className="group flex flex-col items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors animate-bounce"
+      className="group flex flex-col items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors"
     >
       <span className="text-sm font-mono opacity-70 group-hover:opacity-100">Scroll Down</span>
       <div className="relative">

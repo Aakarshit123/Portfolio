@@ -312,7 +312,7 @@ const Projects: React.FC<{ onSectionChange: (section: string) => void }> = ({ on
             <div className="text-center">
               <div className="flex items-center justify-center mb-2">
                 <Award className="text-cyan-400 mr-2" size={24} />
-                <div className="text-2xl font-bold text-cyan-400 font-mono">6+</div>
+                <div className="text-2xl font-bold text-cyan-400 font-mono">14</div>
               </div>
               <div className="text-gray-400 font-mono text-sm">Projects</div>
             </div>

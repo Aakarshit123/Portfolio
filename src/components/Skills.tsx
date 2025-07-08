@@ -19,9 +19,10 @@ const Skills: React.FC<{ onSectionChange: (section: string) => void }> = ({ onSe
       color: 'cyan',
       description: 'Container orchestration and automation',
       skills: [
-        { name: 'Docker Services', level: 88, experience: '2+ years', description: 'Container deployment & management' },
+        { name: 'Docker', level: 88, experience: '2+ years', description: 'Container deployment & management' },
         { name: 'Jenkins', level: 82, experience: '1+ year', description: 'CI/CD pipeline automation' },
-        { name: 'Kubernetes', level: 75, experience: '1+ year', description: 'Container orchestration' }
+        { name: 'Kubernetes', level: 75, experience: '1+ year', description: 'Container orchestration' },
+        { name: 'Linux', level: 80, experience: '2+ years', description: 'Server management & scripting' }
       ]
     },
     {
@@ -34,6 +35,18 @@ const Skills: React.FC<{ onSectionChange: (section: string) => void }> = ({ onSe
         { name: 'JavaScript', level: 85, experience: '2+ years', description: 'Frontend interactivity' },
         { name: 'HTML', level: 95, experience: '3+ years', description: 'Semantic markup & structure' },
         { name: 'CSS', level: 90, experience: '3+ years', description: 'Responsive design & styling' }
+      ]
+    },
+    {
+      title: 'AI & Automation',
+      icon: Star,
+      color: 'magenta',
+      description: 'Machine learning, bots, and automation scripts',
+      skills: [
+        { name: 'Machine Learning', level: 80, experience: '1+ year', description: 'AI-powered solutions and data analysis' },
+        { name: 'NLP', level: 75, experience: '1+ year', description: 'Natural Language Processing for chatbots' },
+        { name: 'OpenCV', level: 70, experience: '1+ year', description: 'Computer vision and image processing' },
+        { name: 'Automation', level: 85, experience: '2+ years', description: 'Task automation and scripting' }
       ]
     }
   ];
