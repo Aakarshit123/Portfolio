@@ -1,113 +1,132 @@
 import React, { useState } from 'react';
-import { ExternalLink, Github, Wrench, Code, Bot, Star, Calendar, Users, GitBranch, Award, Target } from 'lucide-react';
+import { ExternalLink, Github, Code, Star, Users, GitBranch, Award, Target, Folder, Wrench, Bot } from 'lucide-react';
 import ScrollDownArrow from './ScrollDownArrow';
+
+const PYTHON_TASKS_REPO = 'https://github.com/Aakarshit123/Python_Tasks';
+const pythonFiles = [
+  { name: 'call.py', description: 'Automate phone call tasks using Python.' },
+  { name: 'email.py', description: 'Send and manage emails programmatically.' },
+  { name: 'facebook.py', description: 'Interact with Facebook using Python scripts.' },
+  { name: 'instagram.py', description: 'Automate Instagram actions and data scraping.' },
+  { name: 'linkedin.py', description: 'LinkedIn automation and data extraction.' },
+  { name: 'menu.py', description: 'Main menu to access all Python tasks in the repo.' },
+  { name: 'sms.py', description: 'Send and receive SMS using Python.' },
+  { name: 'twitter.py', description: 'Automate Twitter tasks and data collection.' },
+  { name: 'whatsapp.py', description: 'WhatsApp automation and messaging.' },
+];
+
+const projectCategories = [
+  {
+    title: 'DevOps Projects',
+    icon: Wrench,
+    color: 'cyan',
+    description: 'Automation, CI/CD, and Infrastructure Solutions',
+    projects: [
+      {
+        id: 'jenkins-docker',
+        title: 'Docker Automation with Jenkins',
+        description: 'Automated CI/CD pipeline with Jenkins and Docker containerization for seamless deployment and continuous integration workflows.',
+        tech: ['Jenkins', 'Docker', 'Git', 'Linux'],
+        github: 'https://github.com/Aakarshit123/project.git',
+        image: 'https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg?auto=compress&cs=tinysrgb&w=800',
+        stats: { stars: 0, commits: 1, contributors: 1 },
+        status: 'Production',
+        featured: true
+      },
+      {
+        id: 'docker-menu',
+        title: 'Docker Menu',
+        description: 'A menu-driven Python tool for managing Docker containers and images.',
+        tech: ['Python', 'Docker'],
+        github: 'https://github.com/Aakarshit123/Docker_menu.git',
+        image: 'https://images.pexels.com/photos/1181472/pexels-photo-1181472.jpeg?auto=compress&cs=tinysrgb&w=800',
+        stats: { stars: 0, commits: 1, contributors: 1 },
+        status: 'Active',
+        featured: false
+      }
+    ]
+  },
+  {
+    title: 'Full Stack Projects',
+    icon: Code,
+    color: 'lime',
+    description: 'Web Applications & Interactive Development Tools',
+    projects: [
+      {
+        id: 'html-interpreter',
+        title: 'HTML Interpreter',
+        description: 'Real-time HTML/CSS/JS editor with live preview functionality, syntax highlighting, and collaborative features for web development.',
+        tech: ['Python'],
+        github: 'https://github.com/Aakarshit123/html-interpreter.git',
+        image: 'https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=800',
+        stats: { stars: 0, commits: 1, contributors: 1 },
+        status: 'Production',
+        featured: true
+      },
+      {
+        id: 'webcam-app',
+        title: 'Webcam App',
+        description: 'Browser-based camera application with image capture, real-time filters, and advanced video processing capabilities.',
+        tech: ['Python', 'OpenCV'],
+        github: 'https://github.com/Aakarshit123/webcam-app.git',
+        image: 'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=800',
+        stats: { stars: 0, commits: 1, contributors: 1 },
+        status: 'Beta',
+        featured: false
+      },
+      {
+        id: 'location-app',
+        title: 'Location App',
+        description: 'A location-based application for real-time tracking and geolocation services.',
+        tech: ['Python', 'Geolocation'],
+        github: 'https://github.com/Aakarshit123/location-app.git',
+        image: 'https://images.pexels.com/photos/1181245/pexels-photo-1181245.jpeg?auto=compress&cs=tinysrgb&w=800',
+        stats: { stars: 0, commits: 1, contributors: 1 },
+        status: 'Active',
+        featured: false
+      }
+    ]
+  },
+  {
+    title: 'AI & Utility Projects',
+    icon: Bot,
+    color: 'magenta',
+    description: 'Machine Learning & Intelligent System Solutions',
+    projects: [
+      {
+        id: 'ai-chatbot-app',
+        title: 'AI Chatbot App',
+        description: 'Intelligent chatbot that recommends movies based on user preferences, viewing history, and advanced machine learning algorithms.',
+        tech: ['Python', 'NLP', 'Machine Learning'],
+        github: 'https://github.com/Aakarshit123/chatbot-app.git',
+        image: 'https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=800',
+        stats: { stars: 0, commits: 1, contributors: 1 },
+        status: 'Production',
+        featured: true
+      }
+    ]
+  },
+  {
+    title: 'Python Automation Tasks',
+    icon: Folder,
+    color: 'cyan',
+    description: 'A collection of Python scripts for automating daily tasks and social media.',
+    projects: pythonFiles.map(file => ({
+      id: file.name.replace('.py', ''),
+      title: file.name === 'menu.py' ? 'All Tasks Menu' : file.name.replace('.py', '').replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
+      description: file.description,
+      tech: ['Python', 'Automation'],
+      github: `${PYTHON_TASKS_REPO}/blob/main/${file.name}`,
+      image: 'https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800',
+      stats: { stars: 0, commits: 1, contributors: 1 },
+      status: 'Active',
+      featured: file.name === 'menu.py',
+    }))
+  }
+];
 
 const Projects: React.FC<{ onSectionChange: (section: string) => void }> = ({ onSectionChange }) => {
   const [hoveredProject, setHoveredProject] = useState<string | null>(null);
-
-  const projectCategories = [
-    {
-      title: 'DevOps Projects',
-      icon: Wrench,
-      color: 'cyan',
-      description: 'Automation, CI/CD, and Infrastructure Solutions',
-      projects: [
-        {
-          id: 'jenkins-docker',
-          title: 'Jenkins + Docker Pipeline',
-          description: 'Automated CI/CD pipeline with Jenkins and Docker containerization for seamless deployment and continuous integration workflows.',
-          tech: ['Jenkins', 'Docker', 'Git', 'Linux'],
-          github: 'https://github.com/Aakarshit123/project.git',
-          image: 'https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg?auto=compress&cs=tinysrgb&w=800',
-          stats: { stars: 15, commits: 47, contributors: 2 },
-          status: 'Production',
-          featured: true
-        },
-        {
-          id: 'streamlit-docker',
-          title: 'Streamlit Docker Dashboard',
-          description: 'Interactive monitoring dashboard for Docker containers with real-time metrics, container management, and deployment tracking capabilities.',
-          tech: ['Streamlit', 'Docker', 'Python', 'Monitoring'],
-          github: 'https://github.com/Aakarshit123/project.git',
-          image: 'https://images.pexels.com/photos/1181472/pexels-photo-1181472.jpeg?auto=compress&cs=tinysrgb&w=800',
-          stats: { stars: 23, commits: 62, contributors: 1 },
-          status: 'Active',
-          featured: false
-        }
-      ]
-    },
-    {
-      title: 'Full Stack Projects',
-      icon: Code,
-      color: 'lime',
-      description: 'Web Applications & Interactive Development Tools',
-      projects: [
-        {
-          id: 'html-interpreter',
-          title: 'Live HTML Interpreter',
-          description: 'Real-time HTML/CSS/JS editor with live preview functionality, syntax highlighting, and collaborative features for web development.',
-          tech: ['HTML', 'CSS', 'JavaScript', 'Web APIs'],
-          github: 'https://github.com/Aakarshit123/project.git',
-          image: 'https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=800',
-          stats: { stars: 31, commits: 89, contributors: 3 },
-          status: 'Production',
-          featured: true
-        },
-        {
-          id: 'web-camera',
-          title: 'Web Camera Application',
-          description: 'Browser-based camera application with image capture, real-time filters, and advanced video processing capabilities.',
-          tech: ['JavaScript', 'WebRTC', 'Canvas API', 'CSS'],
-          github: 'https://github.com/Aakarshit123/webcam-app.git',
-          image: 'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=800',
-          stats: { stars: 18, commits: 34, contributors: 1 },
-          status: 'Beta',
-          featured: false
-        },
-        {
-          id: 'location-app',
-          title: 'Location App',
-          description: 'A location-based application for real-time tracking and geolocation services.',
-          tech: ['JavaScript', 'React', 'Geolocation API'],
-          github: 'https://github.com/Aakarshit123/location-app.git',
-          image: 'https://images.pexels.com/photos/1181245/pexels-photo-1181245.jpeg?auto=compress&cs=tinysrgb&w=800',
-          stats: { stars: 10, commits: 20, contributors: 1 },
-          status: 'Active',
-          featured: false
-        }
-      ]
-    },
-    {
-      title: 'AI & Utility Projects',
-      icon: Bot,
-      color: 'magenta',
-      description: 'Machine Learning & Intelligent System Solutions',
-      projects: [
-        {
-          id: 'ai-movie-bot',
-          title: 'AI Movie Recommender Chatbot',
-          description: 'Intelligent chatbot that recommends movies based on user preferences, viewing history, and advanced machine learning algorithms.',
-          tech: ['Python', 'NLP', 'Machine Learning', 'Flask'],
-          github: 'https://github.com/Aakarshit123/chatbot-app.git',
-          image: 'https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=800',
-          stats: { stars: 42, commits: 156, contributors: 2 },
-          status: 'Production',
-          featured: true
-        },
-        {
-          id: 'portfolio',
-          title: 'Professional Portfolio',
-          description: 'Modern, responsive portfolio website with neon aesthetics, smooth animations, and interactive particle background effects.',
-          tech: ['React', 'TypeScript', 'Tailwind CSS', 'Canvas API'],
-          github: 'https://github.com/Aakarshit123/portfolio-project.git',
-          image: 'https://images.pexels.com/photos/1181271/pexels-photo-1181271.jpeg?auto=compress&cs=tinysrgb&w=800',
-          stats: { stars: 28, commits: 73, contributors: 1 },
-          status: 'Active',
-          featured: false
-        }
-      ]
-    }
-  ];
 
   const getStatusColor = (status: string) => {
     switch (status) {
