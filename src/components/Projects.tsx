@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { ExternalLink, Github, Wrench, Code, Bot, Star, Calendar, Users, GitBranch, Award, Target } from 'lucide-react';
+import ScrollDownArrow from './ScrollDownArrow';
 
-const Projects: React.FC = () => {
+const Projects: React.FC<{ onSectionChange: (section: string) => void }> = ({ onSectionChange }) => {
   const [hoveredProject, setHoveredProject] = useState<string | null>(null);
 
   const projectCategories = [
@@ -57,10 +58,21 @@ const Projects: React.FC = () => {
           title: 'Web Camera Application',
           description: 'Browser-based camera application with image capture, real-time filters, and advanced video processing capabilities.',
           tech: ['JavaScript', 'WebRTC', 'Canvas API', 'CSS'],
-          github: 'https://github.com/Aakarshit123/project.git',
+          github: 'https://github.com/Aakarshit123/webcam-app.git',
           image: 'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=800',
           stats: { stars: 18, commits: 34, contributors: 1 },
           status: 'Beta',
+          featured: false
+        },
+        {
+          id: 'location-app',
+          title: 'Location App',
+          description: 'A location-based application for real-time tracking and geolocation services.',
+          tech: ['JavaScript', 'React', 'Geolocation API'],
+          github: 'https://github.com/Aakarshit123/location-app.git',
+          image: 'https://images.pexels.com/photos/1181245/pexels-photo-1181245.jpeg?auto=compress&cs=tinysrgb&w=800',
+          stats: { stars: 10, commits: 20, contributors: 1 },
+          status: 'Active',
           featured: false
         }
       ]
@@ -76,7 +88,7 @@ const Projects: React.FC = () => {
           title: 'AI Movie Recommender Chatbot',
           description: 'Intelligent chatbot that recommends movies based on user preferences, viewing history, and advanced machine learning algorithms.',
           tech: ['Python', 'NLP', 'Machine Learning', 'Flask'],
-          github: 'https://github.com/Aakarshit123/project.git',
+          github: 'https://github.com/Aakarshit123/chatbot-app.git',
           image: 'https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=800',
           stats: { stars: 42, commits: 156, contributors: 2 },
           status: 'Production',
@@ -304,6 +316,7 @@ const Projects: React.FC = () => {
           </div>
         </div>
       </div>
+      <ScrollDownArrow targetSection="contact" onSectionChange={onSectionChange} />
     </section>
   );
 };

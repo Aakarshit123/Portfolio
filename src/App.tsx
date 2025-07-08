@@ -67,16 +67,16 @@ function App() {
           <Hero onSectionChange={handleSectionChange} />
         </div>
         <div id="about" className="section-hidden">
-          <About />
+          <About onSectionChange={handleSectionChange} />
         </div>
         <div id="skills" className="section-hidden">
-          <Skills />
+          <Skills onSectionChange={handleSectionChange} />
         </div>
         <div id="projects" className="section-hidden">
-          <Projects />
+          <Projects onSectionChange={handleSectionChange} />
         </div>
         <div id="contact" className="section-hidden">
-          <Contact />
+          <Contact onSectionChange={handleSectionChange} />
         </div>
       </main>
       <Footer />

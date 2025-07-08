@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronDown, Download, Mail, Eye, Sparkles, Code2, Zap } from 'lucide-react';
 import profileImg from '../assets/profile.png';
+import ScrollDownArrow from './ScrollDownArrow';
 
 interface HeroProps {
   onSectionChange: (section: string) => void;
@@ -160,12 +161,8 @@ const Hero: React.FC<HeroProps> = ({ onSectionChange }) => {
                   
                   {/* Profile Content */}
                   <div className="relative z-10 text-center">
-                    <img
-                      src={profileImg}
-                      alt="Profile"
-                      className="w-40 h-40 md:w-56 md:h-56 rounded-full object-cover mx-auto mb-2 border-4 border-cyan-400/40 shadow-lg group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="text-sm text-gray-400 font-mono">
+                    {/* Image removed as requested */}
+                    <div className="text-sm text-gray-400 font-mono mt-32">
                       Developer
                     </div>
                   </div>
@@ -192,18 +189,7 @@ const Hero: React.FC<HeroProps> = ({ onSectionChange }) => {
         </div>
 
         {/* Enhanced Scroll Down Arrow */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-          <button
-            onClick={() => onSectionChange('about')}
-            className="group flex flex-col items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors animate-bounce"
-          >
-            <span className="text-sm font-mono opacity-70 group-hover:opacity-100">Scroll Down</span>
-            <div className="relative">
-              <ChevronDown size={32} className="group-hover:animate-pulse" />
-              <div className="absolute inset-0 bg-cyan-400/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            </div>
-          </button>
-        </div>
+        <ScrollDownArrow targetSection="about" onSectionChange={onSectionChange} />
       </div>
     </section>
   );

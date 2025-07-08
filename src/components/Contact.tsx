@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Mail, Github, Linkedin, Send, CheckCircle, MapPin, Phone, Clock, MessageSquare, User, Briefcase } from 'lucide-react';
+import ScrollDownArrow from './ScrollDownArrow';
 
-const Contact: React.FC = () => {
+const Contact: React.FC<{ onSectionChange: (section: string) => void }> = ({ onSectionChange }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -312,6 +313,7 @@ const Contact: React.FC = () => {
           </div>
         </div>
       </div>
+      <ScrollDownArrow targetSection="home" onSectionChange={onSectionChange} />
     </section>
   );
 };

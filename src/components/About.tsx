@@ -1,7 +1,8 @@
 import React from 'react';
 import { GraduationCap, Briefcase, Code, Coffee, MapPin, Calendar, Award, Target } from 'lucide-react';
+import ScrollDownArrow from './ScrollDownArrow';
 
-const About: React.FC = () => {
+const About: React.FC<{ onSectionChange: (section: string) => void }> = ({ onSectionChange }) => {
   const achievements = [
     { icon: Award, label: 'DevOps Certified', color: 'cyan' },
     { icon: Code, label: 'Full Stack', color: 'lime' },
@@ -204,6 +205,7 @@ const About: React.FC = () => {
           </div>
         </div>
       </div>
+      <ScrollDownArrow targetSection="skills" onSectionChange={onSectionChange} />
     </section>
   );
 };
