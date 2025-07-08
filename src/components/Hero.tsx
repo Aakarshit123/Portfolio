@@ -151,29 +151,14 @@ const Hero: React.FC<HeroProps> = ({ onSectionChange }) => {
                 <div className="w-full h-full rounded-full bg-dark"></div>
               </div>
               
-              {/* Main Profile Circle */}
-              <div className="relative w-72 h-72 rounded-full bg-gradient-to-br from-cyan-400/20 via-magenta-400/20 to-purple-400/20 p-1 group-hover:scale-105 transition-transform duration-500">
-                <div className="w-full h-full rounded-full bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center relative overflow-hidden">
-                  {/* Background Pattern */}
-                  <div className="absolute inset-0 opacity-10">
-                    <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 via-transparent to-magenta-400"></div>
-                  </div>
-                  
-                  {/* Profile Content */}
-                  <div className="relative z-10 text-center">
-                    {/* Image removed as requested */}
-                    <div className="text-sm text-gray-400 font-mono mt-32">
-                      Developer
-                    </div>
-                  </div>
-                  
-                  {/* Floating Icons */}
-                  <div className="absolute top-4 right-4 w-8 h-8 bg-cyan-400/20 rounded-full flex items-center justify-center animate-pulse">
-                    <Code2 size={16} className="text-cyan-400" />
-                  </div>
-                  <div className="absolute bottom-4 left-4 w-8 h-8 bg-magenta-400/20 rounded-full flex items-center justify-center animate-pulse delay-1000">
-                    <Zap size={16} className="text-magenta-400" />
-                  </div>
+              {/* Main Profile Circle with Neon Effect */}
+              <div className="relative w-72 h-72 rounded-full bg-gradient-to-br from-cyan-400/20 via-magenta-400/20 to-purple-400/20 p-2 group-hover:scale-105 transition-transform duration-500 shadow-xl border-4 border-cyan-400 animate-pulse">
+                <div className="w-full h-full rounded-full bg-gray-900 flex items-center justify-center relative overflow-hidden">
+                  <img
+                    src={profileImg}
+                    alt="Profile"
+                    className="w-full h-full object-cover rounded-full shadow-lg border-4 border-white/20 hover:border-cyan-400 transition-all duration-500"
+                  />
                 </div>
               </div>
               
