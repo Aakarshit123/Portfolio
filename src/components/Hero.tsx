@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronDown, Download, Mail, Eye, Sparkles, Code2, Zap } from 'lucide-react';
+import profileImg from '../assets/profile.png';
 
 interface HeroProps {
   onSectionChange: (section: string) => void;
@@ -159,9 +160,11 @@ const Hero: React.FC<HeroProps> = ({ onSectionChange }) => {
                   
                   {/* Profile Content */}
                   <div className="relative z-10 text-center">
-                    <div className="text-6xl font-bold neon-text-cyan mb-2 group-hover:animate-pulse">
-                      AB
-                    </div>
+                    <img
+                      src={profileImg}
+                      alt="Profile"
+                      className="w-40 h-40 md:w-56 md:h-56 rounded-full object-cover mx-auto mb-2 border-4 border-cyan-400/40 shadow-lg group-hover:scale-105 transition-transform duration-500"
+                    />
                     <div className="text-sm text-gray-400 font-mono">
                       Developer
                     </div>
