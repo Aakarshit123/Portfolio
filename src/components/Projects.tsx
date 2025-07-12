@@ -57,7 +57,7 @@ const projectCategories = [
         title: 'Portfolio Website',
         description: 'Modern React portfolio with neon aesthetics, smooth animations, and responsive design showcasing my projects and skills.',
         tech: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
-        github: 'https://github.com/Aakarshit123/project-bolt-sb1-fosdzjor',
+        github: 'https://github.com/Aakarshit123/Portfolio.git',
         image: 'https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=800',
         stats: { stars: 0, commits: 1, contributors: 1 },
         status: 'Production',
