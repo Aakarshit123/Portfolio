@@ -15,7 +15,7 @@ const Contact: React.FC<{ onSectionChange: (section: string) => void }> = ({ onS
 
   // Initialize EmailJS
   useEffect(() => {
-    emailjs.init('YOUR_PUBLIC_KEY'); // Replace with your EmailJS public key
+    emailjs.init('AmP_7kT1KS4RlSdMO'); // Your EmailJS public key
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -34,10 +34,10 @@ const Contact: React.FC<{ onSectionChange: (section: string) => void }> = ({ onS
 
       // Send email using EmailJS
       await emailjs.send(
-        'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
-        'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
+        'service_80xzy1c', // Your EmailJS service ID
+        'template_i6vxs8d', // Your EmailJS template ID
         templateParams,
-        'YOUR_PUBLIC_KEY' // Replace with your EmailJS public key
+        'AmP_7kT1KS4RlSdMO' // Your EmailJS public key
       );
       
       setShowSuccess(true);
@@ -207,8 +207,8 @@ const Contact: React.FC<{ onSectionChange: (section: string) => void }> = ({ onS
                         </h4>
                         <a
                           href={info.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
+                          target={info.link.startsWith('tel:') ? undefined : '_blank'}
+                          rel={info.link.startsWith('tel:') ? undefined : 'noopener noreferrer'}
                           className="text-white hover:text-cyan-400 transition-colors font-mono text-lg block mb-2 font-semibold"
                         >
                           {info.subtitle}
