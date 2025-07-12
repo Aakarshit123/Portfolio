@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Mail, Github, Linkedin, Send, CheckCircle, MapPin, Phone, Clock, MessageSquare, User, Briefcase } from 'lucide-react';
 import ScrollDownArrow from './ScrollDownArrow';
+import emailjs from '@emailjs/browser';
 
 const Contact: React.FC<{ onSectionChange: (section: string) => void }> = ({ onSectionChange }) => {
   const [formData, setFormData] = useState({
@@ -12,18 +13,42 @@ const Contact: React.FC<{ onSectionChange: (section: string) => void }> = ({ onS
   const [showSuccess, setShowSuccess] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Initialize EmailJS
+  useEffect(() => {
+    emailjs.init('YOUR_PUBLIC_KEY'); // Replace with your EmailJS public key
+  }, []);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    setShowSuccess(true);
-    setFormData({ name: '', email: '', subject: '', message: '' });
-    setIsSubmitting(false);
-    
-    setTimeout(() => setShowSuccess(false), 4000);
+    try {
+      // EmailJS configuration
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        to_email: 'aakarshit.cse@gmail.com'
+      };
+
+      // Send email using EmailJS
+      await emailjs.send(
+        'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
+        'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
+        templateParams,
+        'YOUR_PUBLIC_KEY' // Replace with your EmailJS public key
+      );
+      
+      setShowSuccess(true);
+      setFormData({ name: '', email: '', subject: '', message: '' });
+    } catch (error) {
+      console.error('Email sending failed:', error);
+      // You can add error handling here
+    } finally {
+      setIsSubmitting(false);
+      setTimeout(() => setShowSuccess(false), 4000);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -60,6 +85,15 @@ const Contact: React.FC<{ onSectionChange: (section: string) => void }> = ({ onS
       link: 'mailto:aakarshit.cse@gmail.com',
       color: 'lime',
       align: 'left'
+    },
+    {
+      icon: Phone,
+      title: 'Mobile',
+      subtitle: '+91 9596177334',
+      description: 'Call or WhatsApp for urgent matters',
+      link: 'tel:+919596177334',
+      color: 'purple',
+      align: 'right'
     }
   ];
 

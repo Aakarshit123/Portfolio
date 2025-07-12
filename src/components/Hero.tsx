@@ -154,9 +154,9 @@ const Hero: React.FC<HeroProps> = ({ onSectionChange }) => {
               {/* Main Profile Circle with Neon Effect */}
               <div className="relative w-72 h-72 rounded-full bg-gradient-to-br from-cyan-400/20 via-magenta-400/20 to-purple-400/20 p-2 group-hover:scale-105 transition-transform duration-500 shadow-xl border-4 border-cyan-400">
                 <div className="w-full h-full rounded-full bg-gray-900 flex items-center justify-center relative overflow-hidden">
-                  <img
-                    src={profileImg}
-                    alt="Profile"
+                    <img
+                      src={profileImg}
+                      alt="Profile"
                     className="w-full h-full object-cover rounded-full border-4 border-white/20 hover:border-cyan-400 transition-all duration-500"
                   />
                 </div>
