@@ -58,6 +58,7 @@ const projectCategories = [
         description: 'Modern React portfolio with neon aesthetics, smooth animations, and responsive design showcasing my projects and skills.',
         tech: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
         github: 'https://github.com/Aakarshit123/Portfolio.git',
+        demo: 'https://aakarshitcodes.netlify.app/',
         image: 'https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=800',
         stats: { stars: 0, commits: 1, contributors: 1 },
         status: 'Production',
@@ -242,9 +243,16 @@ const Projects: React.FC<{ onSectionChange: (section: string) => void }> = ({ on
                                 >
                                   <Github size={28} />
                                 </a>
-                                <button className="p-4 rounded-full bg-gray-700/50 border border-gray-600 text-gray-300 hover:bg-gray-600/50 transition-colors">
-                                  <ExternalLink size={28} />
-                                </button>
+                                {project.demo && (
+                                  <a
+                                    href={project.demo}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className={`p-4 rounded-full bg-${category.color}-400/20 border border-${category.color}-400/40 text-${category.color}-400 hover:bg-${category.color}-400/30 transition-colors`}
+                                  >
+                                    <ExternalLink size={28} />
+                                  </a>
+                                )}
                               </div>
                               <p className="text-gray-300 font-mono">Click to explore</p>
                             </div>
@@ -303,6 +311,17 @@ const Projects: React.FC<{ onSectionChange: (section: string) => void }> = ({ on
                               <Github size={16} />
                               Code
                             </a>
+                            {project.demo && (
+                              <a
+                                href={project.demo}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={`flex items-center gap-2 px-4 py-2 rounded-lg bg-${category.color}-400/10 text-${category.color}-400 hover:bg-${category.color}-400/20 transition-colors border border-${category.color}-400/30 text-sm font-mono`}
+                              >
+                                <ExternalLink size={16} />
+                                Live Demo
+                              </a>
+                            )}
                           </div>
                         </div>
                       </div>
