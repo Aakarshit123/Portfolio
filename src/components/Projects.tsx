@@ -53,6 +53,17 @@ const projectCategories = [
     description: 'Web Applications & Interactive Development Tools',
     projects: [
       {
+        id: 'portfolio',
+        title: 'Portfolio Website',
+        description: 'Modern React portfolio with neon aesthetics, smooth animations, and responsive design showcasing my projects and skills.',
+        tech: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
+        github: 'https://github.com/Aakarshit123/project-bolt-sb1-fosdzjor',
+        image: 'https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=800',
+        stats: { stars: 0, commits: 1, contributors: 1 },
+        status: 'Production',
+        featured: true
+      },
+      {
         id: 'html-interpreter',
         title: 'HTML Interpreter',
         description: 'Real-time HTML/CSS/JS editor with live preview functionality, syntax highlighting, and collaborative features for web development.',
@@ -312,7 +323,7 @@ const Projects: React.FC<{ onSectionChange: (section: string) => void }> = ({ on
             <div className="text-center">
               <div className="flex items-center justify-center mb-2">
                 <Award className="text-cyan-400 mr-2" size={24} />
-                <div className="text-2xl font-bold text-cyan-400 font-mono">14</div>
+                <div className="text-2xl font-bold text-cyan-400 font-mono">15</div>
               </div>
               <div className="text-gray-400 font-mono text-sm">Projects</div>
             </div>
