@@ -119,7 +119,8 @@ const projectCategories = [
         image: 'https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=800',
         stats: { stars: 0, commits: 1, contributors: 1 },
         status: 'Production',
-        featured: true
+        featured: true,
+        demo: 'https://abargotra1.streamlit.app/',
       }
     ]
   },
@@ -138,7 +139,7 @@ const projectCategories = [
       stats: { stars: 0, commits: 1, contributors: 1 },
       status: 'Active',
       featured: file.name === 'menu.py',
-      // No demo property for pythonFiles
+      demo: 'https://abargotra1.streamlit.app/',
     }))
   }
 ];
