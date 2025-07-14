@@ -319,15 +319,26 @@ const Projects: React.FC<{ onSectionChange: (section: string) => void }> = ({ on
                               Code
                             </a>
                             {project.demo && (
-                              <a
-                                href={project.demo}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className={`flex items-center gap-2 px-4 py-2 rounded-lg bg-${category.color}-400/10 text-${category.color}-400 hover:bg-${category.color}-400/20 transition-colors border border-${category.color}-400/30 text-sm font-mono`}
-                              >
-                                <ExternalLink size={16} />
-                                Live Demo
-                              </a>
+                              <>
+                                <a
+                                  href={project.demo}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className={`flex items-center gap-2 px-4 py-2 rounded-lg bg-${category.color}-400/10 text-${category.color}-400 hover:bg-${category.color}-400/20 transition-colors border border-${category.color}-400/30 text-sm font-mono`}
+                                >
+                                  <ExternalLink size={16} />
+                                  Live Demo
+                                </a>
+                                <a
+                                  href={project.demo}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className={`flex items-center gap-2 px-4 py-2 rounded-lg bg-lime-400/10 text-lime-400 hover:bg-lime-400/20 transition-colors border border-lime-400/30 text-sm font-mono`}
+                                  style={{ fontWeight: 700 }}
+                                >
+                                  🚀 Go Live
+                                </a>
+                              </>
                             )}
                           </div>
                         </div>
