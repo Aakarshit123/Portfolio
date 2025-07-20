@@ -8,6 +8,7 @@ import {
   Target
 } from 'lucide-react';
 import ScrollDownArrow from './ScrollDownArrow';
+import jenkinsSkill from '../assets/jenkins-skill.png';
 
 const Skills: React.FC<{ onSectionChange: (section: string) => void }> = ({ onSectionChange }) => {
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
@@ -19,10 +20,10 @@ const Skills: React.FC<{ onSectionChange: (section: string) => void }> = ({ onSe
       color: 'cyan',
       description: 'Container orchestration and automation',
       skills: [
-        { name: 'Docker', level: 88, experience: '2+ years', description: 'Container deployment & management' },
-        { name: 'Jenkins', level: 82, experience: '1+ year', description: 'CI/CD pipeline automation' },
-        { name: 'Kubernetes', level: 75, experience: '1+ year', description: 'Container orchestration' },
-        { name: 'Linux', level: 80, experience: '2+ years', description: 'Server management & scripting' }
+        { name: 'Docker', level: 88, experience: '2+ years', description: 'Container deployment & management', image: null },
+        { name: 'Jenkins', level: 82, experience: '1+ year', description: 'CI/CD pipeline automation', image: jenkinsSkill },
+        { name: 'Kubernetes', level: 75, experience: '1+ year', description: 'Container orchestration', image: null },
+        { name: 'Linux', level: 80, experience: '2+ years', description: 'Server management & scripting', image: null }
       ]
     },
     {
@@ -31,10 +32,10 @@ const Skills: React.FC<{ onSectionChange: (section: string) => void }> = ({ onSe
       color: 'lime',
       description: 'End-to-end application development',
       skills: [
-        { name: 'Python', level: 90, experience: '3+ years', description: 'Backend development & scripting' },
-        { name: 'JavaScript', level: 85, experience: '2+ years', description: 'Frontend interactivity' },
-        { name: 'HTML', level: 95, experience: '3+ years', description: 'Semantic markup & structure' },
-        { name: 'CSS', level: 90, experience: '3+ years', description: 'Responsive design & styling' }
+        { name: 'Python', level: 90, experience: '3+ years', description: 'Backend development & scripting', image: null },
+        { name: 'JavaScript', level: 85, experience: '2+ years', description: 'Frontend interactivity', image: null },
+        { name: 'HTML', level: 95, experience: '3+ years', description: 'Semantic markup & structure', image: null },
+        { name: 'CSS', level: 90, experience: '3+ years', description: 'Responsive design & styling', image: null }
       ]
     },
     {
@@ -43,10 +44,10 @@ const Skills: React.FC<{ onSectionChange: (section: string) => void }> = ({ onSe
       color: 'magenta',
       description: 'Machine learning, bots, and automation scripts',
       skills: [
-        { name: 'Machine Learning', level: 80, experience: '1+ year', description: 'AI-powered solutions and data analysis' },
-        { name: 'NLP', level: 75, experience: '1+ year', description: 'Natural Language Processing for chatbots' },
-        { name: 'OpenCV', level: 70, experience: '1+ year', description: 'Computer vision and image processing' },
-        { name: 'Automation', level: 85, experience: '2+ years', description: 'Task automation and scripting' }
+        { name: 'Machine Learning', level: 80, experience: '1+ year', description: 'AI-powered solutions and data analysis', image: null },
+        { name: 'NLP', level: 75, experience: '1+ year', description: 'Natural Language Processing for chatbots', image: null },
+        { name: 'OpenCV', level: 70, experience: '1+ year', description: 'Computer vision and image processing', image: null },
+        { name: 'Automation', level: 85, experience: '2+ years', description: 'Task automation and scripting', image: null }
       ]
     }
   ];
@@ -91,7 +92,7 @@ const Skills: React.FC<{ onSectionChange: (section: string) => void }> = ({ onSe
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div className="space-y-12 max-w-7xl mx-auto">
           {skillCategories.map((category, index) => {
             const IconComponent = category.icon;
             return (
@@ -104,7 +105,7 @@ const Skills: React.FC<{ onSectionChange: (section: string) => void }> = ({ onSe
                 <div className={`absolute inset-0 bg-gradient-to-br from-${category.color}-400/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
                 
                 <div className="relative z-10">
-                  <div className="flex items-center mb-6">
+                  <div className="flex items-center mb-8">
                     <div className={`p-4 rounded-full bg-${category.color}-400/10 border border-${category.color}-400/20 mr-4 group-hover:animate-pulse`}>
                       <IconComponent 
                         className={`text-${category.color}-400`} 
@@ -120,41 +121,51 @@ const Skills: React.FC<{ onSectionChange: (section: string) => void }> = ({ onSe
                     </div>
                   </div>
                   
-                  <div className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {category.skills.map((skill, skillIndex) => (
                       <div
                         key={skillIndex}
-                        className="relative group/skill cursor-pointer p-4 rounded-lg bg-gray-800/30 border border-gray-700/50 hover:border-gray-600/50 transition-all duration-300"
+                        className="relative group/skill cursor-pointer p-6 rounded-lg bg-gray-800/30 border border-gray-700/50 hover:border-gray-600/50 transition-all duration-300 hover:transform hover:scale-105"
                         onMouseEnter={() => setHoveredSkill(`${category.title}-${skill.name}`)}
                         onMouseLeave={() => setHoveredSkill(null)}
                       >
-                        <div className="flex items-center justify-between mb-3">
-                          <div>
-                            <span className="text-white font-mono text-lg font-semibold">{skill.name}</span>
-                            <p className="text-gray-400 font-mono text-sm mt-1">{skill.description}</p>
+                        {/* Skill Image */}
+                        {skill.image && (
+                          <div className="flex justify-center mb-4">
+                            <img 
+                              src={skill.image} 
+                              alt={skill.name}
+                              className="w-16 h-16 object-contain filter brightness-0 invert opacity-80 group-hover/skill:opacity-100 transition-opacity duration-300"
+                            />
                           </div>
-                          <div className="flex items-center gap-3">
-                            <span className={`text-${getSkillLevelColor(skill.level)}-400 font-mono text-sm font-semibold`}>
-                              {getSkillLevel(skill.level)}
-                            </span>
-                            <div className="flex items-center gap-1">
-                              {[...Array(5)].map((_, starIndex) => (
-                                <Star
-                                  key={starIndex}
-                                  size={14}
-                                  className={`${
-                                    starIndex < getSkillStars(skill.level)
-                                      ? `text-${getSkillLevelColor(skill.level)}-400 fill-current`
-                                      : 'text-gray-600'
-                                  } transition-colors duration-200`}
-                                />
-                              ))}
-                            </div>
+                        )}
+                        
+                        <div className="text-center mb-4">
+                          <span className="text-white font-mono text-lg font-semibold block mb-2">{skill.name}</span>
+                          <p className="text-gray-400 font-mono text-sm">{skill.description}</p>
+                        </div>
+                        
+                        <div className="flex items-center justify-center mb-4">
+                          <span className={`text-${getSkillLevelColor(skill.level)}-400 font-mono text-sm font-semibold mr-3`}>
+                            {getSkillLevel(skill.level)}
+                          </span>
+                          <div className="flex items-center gap-1">
+                            {[...Array(5)].map((_, starIndex) => (
+                              <Star
+                                key={starIndex}
+                                size={14}
+                                className={`${
+                                  starIndex < getSkillStars(skill.level)
+                                    ? `text-${getSkillLevelColor(skill.level)}-400 fill-current`
+                                    : 'text-gray-600'
+                                } transition-colors duration-200`}
+                              />
+                            ))}
                           </div>
                         </div>
                         
                         {/* Skill Progress Bar */}
-                        <div className="relative h-3 bg-gray-800 rounded-full overflow-hidden mb-3">
+                        <div className="relative h-3 bg-gray-800 rounded-full overflow-hidden mb-4">
                           <div
                             className={`h-full bg-gradient-to-r from-${getSkillLevelColor(skill.level)}-400 to-${getSkillLevelColor(skill.level)}-300 rounded-full transition-all duration-1000 ease-out relative`}
                             style={{ 
@@ -167,11 +178,11 @@ const Skills: React.FC<{ onSectionChange: (section: string) => void }> = ({ onSe
                         </div>
                         
                         {/* Skill Level Indicator */}
-                        <div className="flex items-center justify-between">
-                          <span className={`text-${getSkillLevelColor(skill.level)}-400 font-mono text-sm font-semibold`}>
+                        <div className="text-center">
+                          <span className={`text-${getSkillLevelColor(skill.level)}-400 font-mono text-sm font-semibold block mb-1`}>
                             {skill.level}% Proficiency
                           </span>
-                          <div className="flex items-center gap-2">
+                          <div className="flex items-center justify-center gap-2">
                             <TrendingUp size={14} className={`text-${getSkillLevelColor(skill.level)}-400`} />
                             <span className="text-gray-500 font-mono text-sm">{skill.experience}</span>
                           </div>
@@ -201,14 +212,14 @@ const Skills: React.FC<{ onSectionChange: (section: string) => void }> = ({ onSe
           <div className="text-center p-6 rounded-xl bg-cyan-400/5 border border-cyan-400/20 hover:bg-cyan-400/10 transition-all duration-300 hover:transform hover:scale-105">
             <div className="flex items-center justify-center mb-3">
               <Award className="text-cyan-400 mr-2" size={24} />
-              <div className="text-3xl font-bold text-cyan-400 font-mono">2</div>
+              <div className="text-3xl font-bold text-cyan-400 font-mono">3</div>
             </div>
             <div className="text-gray-400 font-mono text-sm">Specializations</div>
           </div>
           <div className="text-center p-6 rounded-xl bg-lime-400/5 border border-lime-400/20 hover:bg-lime-400/10 transition-all duration-300 hover:transform hover:scale-105">
             <div className="flex items-center justify-center mb-3">
               <Target className="text-lime-400 mr-2" size={24} />
-              <div className="text-3xl font-bold text-lime-400 font-mono">7</div>
+              <div className="text-3xl font-bold text-lime-400 font-mono">12</div>
             </div>
             <div className="text-gray-400 font-mono text-sm">Technologies</div>
           </div>
