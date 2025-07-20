@@ -16,7 +16,6 @@ const About: React.FC<{ onSectionChange: (section: string) => void }> = ({ onSec
         <div className="absolute top-10 right-10 w-32 h-32 border border-cyan-400/10 rounded-full animate-pulse"></div>
         <div className="absolute bottom-20 left-10 w-24 h-24 border border-magenta-400/10 rounded-full animate-pulse delay-1000"></div>
       </div>
-
       <div className="container mx-auto relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold neon-text-cyan font-mono mb-4">
@@ -27,10 +26,9 @@ const About: React.FC<{ onSectionChange: (section: string) => void }> = ({ onSec
             Passionate about building scalable solutions and automating complex workflows
           </p>
         </div>
-
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Left Side - Education & Experience Timeline */}
-          <div className="space-y-8 animate-fadeInLeft">
+          <div className="space-y-8">
             {/* Education Card */}
             <div className="bg-gray-900/60 backdrop-blur-sm rounded-xl border border-cyan-400/20 p-8 hover:border-cyan-400/40 transition-all duration-300 hover:transform hover:scale-105">
               <div className="flex items-center mb-6">
@@ -42,7 +40,6 @@ const About: React.FC<{ onSectionChange: (section: string) => void }> = ({ onSec
                   <div className="w-16 h-0.5 bg-cyan-400 mt-2"></div>
                 </div>
               </div>
-              
               <div className="relative pl-8">
                 <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-cyan-400 to-transparent"></div>
                 <div className="relative bg-gray-800/40 p-6 rounded-lg border border-cyan-400/10 hover:border-cyan-400/30 transition-colors">
@@ -63,7 +60,6 @@ const About: React.FC<{ onSectionChange: (section: string) => void }> = ({ onSec
                 </div>
               </div>
             </div>
-
             {/* Experience Card */}
             <div className="bg-gray-900/60 backdrop-blur-sm rounded-xl border border-magenta-400/20 p-8 hover:border-magenta-400/40 transition-all duration-300 hover:transform hover:scale-105">
               <div className="flex items-center mb-6">
@@ -75,7 +71,6 @@ const About: React.FC<{ onSectionChange: (section: string) => void }> = ({ onSec
                   <div className="w-16 h-0.5 bg-magenta-400 mt-2"></div>
                 </div>
               </div>
-              
               <div className="relative pl-8">
                 <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-magenta-400 to-transparent"></div>
                 <div className="relative bg-gray-800/40 p-6 rounded-lg border border-magenta-400/10 hover:border-magenta-400/30 transition-colors">
@@ -98,7 +93,6 @@ const About: React.FC<{ onSectionChange: (section: string) => void }> = ({ onSec
                 </div>
               </div>
             </div>
-
             {/* Achievements */}
             <div className="grid grid-cols-3 gap-4">
               {achievements.map((achievement, index) => {
@@ -112,9 +106,8 @@ const About: React.FC<{ onSectionChange: (section: string) => void }> = ({ onSec
               })}
             </div>
           </div>
-
           {/* Right Side - Bio & Tech Stack */}
-          <div className="space-y-8 animate-fadeInRight">
+          <div className="space-y-8">
             {/* Bio Card */}
             <div className="bg-gray-900/60 backdrop-blur-sm rounded-xl border border-lime-400/20 p-8 hover:border-lime-400/40 transition-all duration-300 hover:transform hover:scale-105">
               <div className="flex items-center mb-6">
@@ -126,7 +119,6 @@ const About: React.FC<{ onSectionChange: (section: string) => void }> = ({ onSec
                   <div className="w-16 h-0.5 bg-lime-400 mt-2"></div>
                 </div>
               </div>
-              
               <div className="relative">
                 <div className="absolute -left-4 top-0 w-1 h-full bg-gradient-to-b from-lime-400 to-transparent opacity-30"></div>
                 <p className="text-gray-300 leading-relaxed text-lg font-mono mb-6">
@@ -135,7 +127,6 @@ const About: React.FC<{ onSectionChange: (section: string) => void }> = ({ onSec
                   I'm passionate about creating <span className="text-magenta-400 font-semibold">efficient systems</span> that 
                   solve real-world problems.
                 </p>
-                
                 <div className="p-6 bg-gray-800/30 rounded-lg border border-lime-400/10">
                   <div className="flex items-center gap-2 mb-3">
                     <div className="w-2 h-2 bg-lime-400 rounded-full animate-pulse"></div>
@@ -147,7 +138,6 @@ const About: React.FC<{ onSectionChange: (section: string) => void }> = ({ onSec
                 </div>
               </div>
             </div>
-
             {/* Enhanced Tech Stack */}
             <div className="bg-gray-900/60 backdrop-blur-sm rounded-xl border border-purple-400/20 p-8 hover:border-purple-400/40 transition-all duration-300 hover:transform hover:scale-105">
               <div className="flex items-center mb-6">
@@ -159,7 +149,6 @@ const About: React.FC<{ onSectionChange: (section: string) => void }> = ({ onSec
                   <div className="w-16 h-0.5 bg-purple-400 mt-2"></div>
                 </div>
               </div>
-              
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-4">
                   <div className="p-6 bg-cyan-400/5 rounded-lg border border-cyan-400/20 hover:border-cyan-400/40 transition-colors">
@@ -173,7 +162,6 @@ const About: React.FC<{ onSectionChange: (section: string) => void }> = ({ onSec
                       ))}
                     </div>
                   </div>
-                  
                   <div className="p-6 bg-lime-400/5 rounded-lg border border-lime-400/20 hover:border-lime-400/40 transition-colors">
                     <h4 className="text-lime-400 font-semibold text-lg mb-4 font-mono">Backend</h4>
                     <div className="space-y-3">
@@ -186,7 +174,6 @@ const About: React.FC<{ onSectionChange: (section: string) => void }> = ({ onSec
                     </div>
                   </div>
                 </div>
-                
                 <div className="space-y-4">
                   <div className="p-6 bg-magenta-400/5 rounded-lg border border-magenta-400/20 hover:border-magenta-400/40 transition-colors">
                     <h4 className="text-magenta-400 font-semibold text-lg mb-4 font-mono">Frontend</h4>
