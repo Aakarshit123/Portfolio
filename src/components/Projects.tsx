@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { ExternalLink, Github, Code, Star, Users, GitBranch, Award, Target, Folder, Wrench, Bot } from 'lucide-react';
 import ScrollDownArrow from './ScrollDownArrow';
 // Import logos for WhatsApp and Instagram
-import whatsappLogo from '../assets/whatsapp-logo.png';
-import instagramLogo from '../assets/instagram-logo.png';
 import jenkinsLogo from '../assets/jenkins-logo.png';
 
 const PYTHON_TASKS_REPO = 'https://github.com/Aakarshit123/Python_Tasks';
@@ -11,12 +9,12 @@ const pythonFiles = [
   { name: 'call.py', description: 'Automate phone call tasks using Python.' },
   { name: 'email.py', description: 'Send and manage emails programmatically.' },
   { name: 'facebook.py', description: 'Interact with Facebook using Python scripts.' },
-  { name: 'instagram.py', description: 'Automate Instagram actions and data scraping.', image: instagramLogo },
+  { name: 'instagram.py', description: 'Automate Instagram actions and data scraping.' },
   { name: 'linkedin.py', description: 'LinkedIn automation and data extraction.' },
   { name: 'menu.py', description: 'Main menu to access all Python tasks in the repo.' },
   { name: 'sms.py', description: 'Send and receive SMS using Python.' },
   { name: 'twitter.py', description: 'Automate Twitter tasks and data collection.' },
-  { name: 'whatsapp.py', description: 'WhatsApp automation and messaging.', image: whatsappLogo },
+  { name: 'whatsapp.py', description: 'WhatsApp automation and messaging.' },
 ];
 
 const projectCategories = [
@@ -135,7 +133,7 @@ const projectCategories = [
       description: file.description,
       tech: ['Python', 'Automation'],
       github: `${PYTHON_TASKS_REPO}/blob/main/${file.name}`,
-      image: file.image || 'https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: 'https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800',
       stats: { stars: 0, commits: 1, contributors: 1 },
       status: 'Active',
       featured: file.name === 'menu.py',
