@@ -204,16 +204,16 @@ const Projects: React.FC<{ onSectionChange: (section: string) => void }> = ({ on
                   {category.projects.map((project, projectIndex) => (
                     <div
                       key={projectIndex}
-                      className={`group relative overflow-hidden rounded-xl bg-gray-900/60 backdrop-blur-sm border border-${category.color}-400/20 hover:border-${category.color}-400/40 transition-all duration-500 hover:transform hover:scale-105`}
-                      style={{ animationDelay: `${projectIndex * 0.2}s` }}
+                      className={`group relative overflow-hidden rounded-2xl bg-white/10 backdrop-blur-md border border-${category.color}-400/10 shadow-2xl hover:border-lime-400 hover:-rotate-2 hover:scale-105 transition-all duration-500`}
+                      style={{ animationDelay: `${projectIndex * 0.2}s`, animationName: 'fadeInUp' }}
                       onMouseEnter={() => setHoveredProject(project.id)}
                       onMouseLeave={() => setHoveredProject(null)}
                     >
                       {/* Featured Badge */}
                       {project.featured && (
                         <div className="absolute top-4 right-4 z-20">
-                          <div className={`px-3 py-1 bg-${category.color}-400/20 border border-${category.color}-400/40 rounded-full text-xs font-mono text-${category.color}-400 flex items-center gap-1`}>
-                            <Star size={12} className="fill-current" />
+                          <div className={`px-3 py-1 bg-gradient-to-r from-lime-400/80 to-cyan-400/80 border border-lime-400/60 rounded-full text-xs font-mono text-white font-bold shadow-lg flex items-center gap-1 animate-pulse`}> 
+                            <Star size={12} className="fill-current text-yellow-300" />
                             Featured
                           </div>
                         </div>
@@ -231,9 +231,10 @@ const Projects: React.FC<{ onSectionChange: (section: string) => void }> = ({ on
                         <img
                           src={project.image}
                           alt={project.title}
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                          className="w-full h-full object-cover group-hover:scale-105 group-hover:brightness-90 transition-transform duration-500 rounded-xl shadow-lg"
+                          style={{ minHeight: '180px', maxHeight: '260px' }}
                         />
-                        <div className={`absolute inset-0 bg-gradient-to-t from-${category.color}-400/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
+                        <div className={`absolute inset-0 bg-gradient-to-t from-${category.color}-400/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
                         
                         {/* Hover Overlay */}
                         {hoveredProject === project.id && (
@@ -318,15 +319,15 @@ const Projects: React.FC<{ onSectionChange: (section: string) => void }> = ({ on
                             </a>
                             {project.demo && (
                               <>
-                                <a
-                                  href={project.demo}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className={`flex items-center gap-2 px-4 py-2 rounded-lg bg-${category.color}-400/10 text-${category.color}-400 hover:bg-${category.color}-400/20 transition-colors border border-${category.color}-400/30 text-sm font-mono`}
-                                >
-                                  <ExternalLink size={16} />
-                                  Live Demo
-                                </a>
+                              <a
+                                href={project.demo}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={`flex items-center gap-2 px-4 py-2 rounded-lg bg-${category.color}-400/10 text-${category.color}-400 hover:bg-${category.color}-400/20 transition-colors border border-${category.color}-400/30 text-sm font-mono`}
+                              >
+                                <ExternalLink size={16} />
+                                Live Demo
+                              </a>
                                 <a
                                   href={project.demo}
                                   target="_blank"
@@ -382,6 +383,12 @@ const Projects: React.FC<{ onSectionChange: (section: string) => void }> = ({ on
         </div>
       </div>
       <ScrollDownArrow targetSection="contact" onSectionChange={onSectionChange} />
+      <style>{`
+        @keyframes fadeInUp {
+          0% { opacity: 0; transform: translateY(40px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
     </section>
   );
 };
