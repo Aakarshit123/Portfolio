@@ -184,30 +184,23 @@ const Projects: React.FC<{ onSectionChange: (section: string) => void }> = ({ on
                 <div className="text-center">
                   <div className="inline-flex items-center gap-4 mb-6">
                     <div className={`p-4 rounded-full bg-${category.color}-400/10 border border-${category.color}-400/20`}>
-                      <IconComponent 
-                        className={`text-${category.color}-400`} 
-                        size={36} 
-                      />
+                      <IconComponent className={`text-${category.color}-400`} size={36} />
                     </div>
-                    <div className="text-left">
-                      <h3 className={`text-3xl font-bold neon-text-${category.color} font-mono mb-1`}>
-                        {category.title}
-                      </h3>
-                      <p className="text-gray-400 font-mono">{category.description}</p>
-                    </div>
+                    <h3 className={`text-3xl font-bold font-mono text-${category.color}-400`}>{category.title}</h3>
                   </div>
-                  <div className={`w-24 h-0.5 bg-${category.color}-400 mx-auto`}></div>
+                  <p className="text-gray-400 font-mono max-w-xl mx-auto">{category.description}</p>
                 </div>
-
                 {/* Projects Grid */}
-                <div className="grid md:grid-cols-2 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 justify-items-center">
                   {category.projects.map((project, projectIndex) => (
                     <div
-                      key={projectIndex}
+                      key={project.id}
                       className={`group relative overflow-hidden rounded-2xl bg-white/10 backdrop-blur-md border border-${category.color}-400/10 shadow-2xl hover:border-lime-400 hover:-rotate-2 hover:scale-105 transition-all duration-500`}
                       style={{ animationDelay: `${projectIndex * 0.2}s`, animationName: 'fadeInUp' }}
                       onMouseEnter={() => setHoveredProject(project.id)}
                       onMouseLeave={() => setHoveredProject(null)}
+                      tabIndex={0}
+                      aria-label={`Project: ${project.title}`}
                     >
                       {/* Featured Badge */}
                       {project.featured && (
