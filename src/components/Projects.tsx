@@ -191,11 +191,11 @@ const Projects: React.FC<{ onSectionChange: (section: string) => void }> = ({ on
                   <p className="text-gray-400 font-mono max-w-xl mx-auto">{category.description}</p>
                 </div>
                 {/* Projects Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 justify-items-center">
+                <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
                   {category.projects.map((project, projectIndex) => (
                     <div
                       key={project.id}
-                      className={`group relative overflow-hidden rounded-2xl bg-white/10 backdrop-blur-md border border-${category.color}-400/10 shadow-2xl hover:border-lime-400 hover:-rotate-2 hover:scale-105 transition-all duration-500`}
+                      className={`group relative overflow-hidden rounded-2xl bg-white/10 backdrop-blur-md border border-${category.color}-400/10 shadow-2xl hover:border-lime-400 hover:-rotate-2 hover:scale-105 transition-all duration-500 h-full flex flex-col`}
                       style={{ animationDelay: `${projectIndex * 0.2}s`, animationName: 'fadeInUp' }}
                       onMouseEnter={() => setHoveredProject(project.id)}
                       onMouseLeave={() => setHoveredProject(null)}
@@ -260,14 +260,14 @@ const Projects: React.FC<{ onSectionChange: (section: string) => void }> = ({ on
                       </div>
                       
                       {/* Project Content */}
-                      <div className="p-8 space-y-4">
+                      <div className="p-6 space-y-4 flex-1 flex flex-col">
                         <div className="flex items-start justify-between">
                           <h4 className="text-xl font-bold text-white font-mono group-hover:text-cyan-400 transition-colors">
                             {project.title}
                           </h4>
                         </div>
                         
-                        <p className="text-gray-300 leading-relaxed font-mono">
+                        <p className="text-gray-300 leading-relaxed font-mono flex-1">
                           {project.description}
                         </p>
                         
@@ -284,7 +284,7 @@ const Projects: React.FC<{ onSectionChange: (section: string) => void }> = ({ on
                         </div>
                         
                         {/* Project Stats */}
-                        <div className="flex items-center justify-between pt-4 border-t border-gray-700/50">
+                        <div className="flex items-center justify-between pt-4 border-t border-gray-700/50 mt-auto">
                           <div className="flex items-center gap-4 text-sm font-mono text-gray-400">
                             <div className="flex items-center gap-1">
                               <Star size={14} />
@@ -299,40 +299,30 @@ const Projects: React.FC<{ onSectionChange: (section: string) => void }> = ({ on
                               <span>{project.stats.contributors}</span>
                             </div>
                           </div>
-                          
-                          <div className="flex gap-2">
+                        </div>
+                        
+                        {/* Action Buttons */}
+                        <div className="flex gap-2 pt-4">
+                          <a
+                            href={project.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={`flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-${category.color}-400/10 text-${category.color}-400 hover:bg-${category.color}-400/20 transition-colors border border-${category.color}-400/30 text-sm font-mono`}
+                          >
+                            <Github size={16} />
+                            Code
+                          </a>
+                          {project.demo && (
                             <a
-                              href={project.github}
+                              href={project.demo}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className={`flex items-center gap-2 px-4 py-2 rounded-lg bg-${category.color}-400/10 text-${category.color}-400 hover:bg-${category.color}-400/20 transition-colors border border-${category.color}-400/30 text-sm font-mono`}
+                              className={`flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-lime-400/10 text-lime-400 hover:bg-lime-400/20 transition-colors border border-lime-400/30 text-sm font-mono font-bold`}
                             >
-                              <Github size={16} />
-                              Code
+                              <ExternalLink size={16} />
+                              Live Demo
                             </a>
-                            {project.demo && (
-                              <>
-                              <a
-                                href={project.demo}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className={`flex items-center gap-2 px-4 py-2 rounded-lg bg-${category.color}-400/10 text-${category.color}-400 hover:bg-${category.color}-400/20 transition-colors border border-${category.color}-400/30 text-sm font-mono`}
-                              >
-                                <ExternalLink size={16} />
-                                Live Demo
-                              </a>
-                                <a
-                                  href={project.demo}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className={`flex items-center gap-2 px-4 py-2 rounded-lg bg-lime-400/10 text-lime-400 hover:bg-lime-400/20 transition-colors border border-lime-400/30 text-sm font-mono`}
-                                  style={{ fontWeight: 700 }}
-                                >
-                                  🚀 Go Live
-                                </a>
-                              </>
-                            )}
-                          </div>
+                          )}
                         </div>
                       </div>
 
